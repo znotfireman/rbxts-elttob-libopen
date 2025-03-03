@@ -1,0 +1,6 @@
+{
+    "name": "Event",
+    "tree": {
+        "$path": "src"
+    }
+}

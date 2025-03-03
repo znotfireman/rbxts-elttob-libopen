@@ -1,0 +1,6 @@
+{
+    "name": "doCleanup",
+    "tree": {
+        "$path": "src"
+    }
+}

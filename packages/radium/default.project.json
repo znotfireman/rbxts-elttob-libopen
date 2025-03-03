@@ -1,0 +1,6 @@
+{
+    "name": "Radium",
+    "tree": {
+        "$path": "src"
+    }
+}

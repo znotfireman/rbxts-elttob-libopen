@@ -1,0 +1,6 @@
+{
+    "name": "DontYield",
+    "tree": {
+        "$path": "src"
+    }
+}

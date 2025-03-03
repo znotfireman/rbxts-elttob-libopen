@@ -1,0 +1,24 @@
+{
+    "name": "@rbxts/libopen-ty",
+    "version": "1.0.0",
+    "description": "LibOpen's ty",
+    "main": "src/init.luau",
+    "license": "MIT",
+    "types": "src/index.d.ts",
+    "scripts": {
+        "prepublishOnly": "cp ../../README.md . && cp ../../LICENSE.md ."
+    },
+    "files": [
+        "src",
+        "LICENSE.md",
+        "default.project.json",
+        "package.json",
+        "!**/*.tsbuildinfo"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "dependencies": {
+        "@rbxts/libopen-maybe": "workspace:*"
+    }
+}
