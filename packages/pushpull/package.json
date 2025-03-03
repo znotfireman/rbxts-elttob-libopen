@@ -1,7 +1,7 @@
 {
-    "name": "@rbxts/libopen-maybe",
+    "name": "@rbxts/libopen-pushpull",
     "version": "1.0.0",
-    "description": "LibOpen's Maybe",
+    "description": "LibOpen's PushPull",
     "main": "src/init.luau",
     "license": "MIT",
     "types": "src/index.d.ts",

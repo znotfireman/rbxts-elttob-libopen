@@ -62,8 +62,6 @@ importers:
 
   packages/fzy: {}
 
-  packages/libopen: {}
-
   packages/maybe: {}
 
   packages/oklab: {}
@@ -72,7 +70,7 @@ importers:
     dependencies:
       '@rbxts/libopen-maybe':
         specifier: workspace:*
-        version: link:../ty
+        version: link:../maybe
 
   packages/radium: {}
 
@@ -84,7 +82,7 @@ importers:
     dependencies:
       '@rbxts/libopen-maybe':
         specifier: workspace:*
-        version: 'link:'
+        version: link:../maybe
 
   packages/whyhttp: {}
 
