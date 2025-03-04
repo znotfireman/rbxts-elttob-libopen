@@ -6,16 +6,17 @@ declare namespace ty {
 	export type Static<T> = T extends Def<infer CastTo> ? CastTo : never;
 
 	export interface Def<CastTo> {
-		ExpectsType: string;
-		NotOfTypeError: string;
-		Matches(value: unknown): boolean;
+		readonly ExpectsType: string;
+		readonly NotOfTypeError: string;
+		Matches(value: unknown): value is CastTo;
 		Cast(value: unknown): Maybe<CastTo>;
 
 		Optional(): Def<CastTo | undefined>;
 		IgnoreInvalid(): Def<CastTo | undefined>;
 		Or<L>(last: Def<L>): Def<CastTo | L>;
 		And<L>(last: Def<L>): Def<CastTo & L>;
-		IntoTagged<Tag>(tag: Tag): Def<{ __tag: Tag; value: CastTo }>;
+		MapOf<V>(values: Def<V>): Def<Map<CastTo, V>>;
+		IntoTagged<Tag extends string>(tag: Tag): Def<{ __tag: Tag; value: CastTo }>;
 		IntoString(): Def<string>;
 		IntoNumber(base?: number): Def<number>;
 		IntoDefault(defaultValue: NonNullable<CastTo>): Def<NonNullable<CastTo>>;
@@ -32,7 +33,6 @@ declare namespace ty {
 	export function IgnoreInvalid<T>(innerDef: T): Def<T | undefined>;
 	export function Or<F, L>(first: Def<F>, last: Def<L>): Def<F | L>;
 	export function And<F, L>(first: Def<F>, last: Def<L>): Def<F & L>;
-	export function MapOf<K extends string | number | symbol, V>(keys: Def<K>, values: Def<V>): Def<Record<K, V>>;
 	export function MapOf<K, V>(keys: Def<K>, values: Def<V>): Def<Map<K, V>>;
 	export function Array<V>(values: Def<V>): Def<V[]>;
 	export function Struct<T extends Record<string, Def<unknown>>>(
@@ -43,7 +43,7 @@ declare namespace ty {
 		options: { exhaustive: boolean },
 		tuple: T,
 	): Def<{ [K in keyof T]: Static<T[K]> }>;
-	export function IntoTagged<Tag, T>(innerDef: Def<T>, tag: Tag): Def<{ __tag: Tag; value: T }>;
+	export function IntoTagged<Tag extends string, T>(innerDef: Def<T>, tag: Tag): Def<{ __tag: Tag; value: T }>;
 	export function IntoString<T>(innerDef: Def<T>): Def<string>;
 	export function IntoNumber<T>(innerDef: Def<T>, base?: number): Def<number>;
 	export function IntoDefault<T>(innerDef: Def<T>, defaultValue: NonNullable<T>): Def<NonNullable<T>>;

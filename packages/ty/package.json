@@ -19,6 +19,6 @@
         "access": "public"
     },
     "dependencies": {
-        "@rbxts/libopen-maybe": "workspace:*"
+        "@rbxts/libopen-maybe": "workspace:@1.0.0"
     }
 }
